@@ -1,0 +1,8 @@
+env: ywspi-dev
+stackVersion: v0.28.0
+profile: core
+location: westus3
+ingressMode: azure
+imageBranch: master
+nameSuffix: 3ccff
+forks: []

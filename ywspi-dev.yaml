@@ -5,4 +5,7 @@ location: westus3
 ingressMode: azure
 imageBranch: master
 nameSuffix: 3ccff
-forks: []
+forks:
+  - service: entitlements
+    repo: yuchenwang-spi/osdu-spi-entitlements
+    canonicalSource: community

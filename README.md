@@ -6,12 +6,13 @@ This repository does not publish a custom stack or run deployment workflows.
 
 ## ywspi-dev
 
-[`ywspi-dev.yaml`](ywspi-dev.yaml) pins a core stack in West US 3. Its resource
-group and cluster are named `spi-stack-ywspi-dev`. The initial data partition is
-`opendes`; all services initially use community images.
+[`ywspi-dev.yaml`](ywspi-dev.yaml) pins a core stack in West US 3 in the
+AzureGlobal1 tenant. Its resource group and cluster are named `spi-stack-ywspi-dev`.
+The initial data partition is `opendes`; all services initially use community images.
 
 Use the official CLI release matching `stackVersion`. Confirm that Azure CLI is
-signed in to the intended tenant and subscription before running:
+signed in to the approved AzureGlobal1 subscription, not the retired MSFT Apollo
+subscription, before running:
 
 ```powershell
 az account show --query '{subscription:id,tenant:tenantId}' --output json
@@ -30,6 +31,11 @@ version-pinned deployment.
 The CLI reads declarations from `main`. Use pull requests for changes. Keep
 `nameSuffix` stable across retries and upgrades; do not change region on an
 existing environment as though it were an in-place upgrade.
+
+A tenant migration is a new deployment. The AzureGlobal1 declaration uses a new
+suffix to avoid names retained by the retired environment's soft-deleted resources.
+Re-onboard service forks to the new identities; client IDs and federated credentials
+from the previous tenant must not be reused.
 
 Each `forks` entry authorizes the named repository's CI against this environment.
 Only list our own service forks. Establish the repository's `spi-stack` GitHub

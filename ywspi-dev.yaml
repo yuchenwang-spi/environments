@@ -4,7 +4,7 @@ profile: core
 location: westus3
 ingressMode: azure
 imageBranch: master
-nameSuffix: 3ccff
+nameSuffix: d301e
 forks:
   - service: entitlements
     repo: yuchenwang-spi/osdu-spi-entitlements
